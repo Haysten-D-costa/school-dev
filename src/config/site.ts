@@ -1,15 +1,15 @@
 export const siteConfig = {
-  name: "St. Joseph's High School",
-  shortName: "SJHS",
-  location: "Mapusa, Goa",
+  name: "Auxilium Primary School",
+  shortName: "APS",
+  location: "Carona, Goa",
   established: "1947",
   motto: "Knowledge · Character · Excellence",
   description:
-    "St. Joseph's High School, Mapusa — Nurturing young minds with quality education, strong values, and a vibrant community since 1947.",
+    "Auxilium Primary School, Carona — Nurturing young minds with quality education, strong values, and a vibrant community since 1947.",
   contact: {
-    address: "St. Joseph's Nagar, Mapusa, Goa — 403507",
-    phone: "+91 832 226 2340",
-    email: "info@stjosephsmapusa.edu.in",
+    address: "Carona, Aldona, Bardez, Goa — 403523",
+    phone: "+91 99999 88888",
+    email: "info@auxiliumcarona.edu.in",
   },
   social: {
     facebook: "#",

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: {
-    default: "St. Joseph's High School",
-    template: "%s | St. Joseph's High School",
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
   },
-  description:
-    "St. Joseph's High School, Mapusa, Goa — Nurturing young minds with quality education, strong values, and a vibrant school community.",
+  description: siteConfig.description,
 };
 
 export default function RootLayout({

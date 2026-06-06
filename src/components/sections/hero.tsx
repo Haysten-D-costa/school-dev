@@ -16,15 +16,15 @@ export default function Hero() {
       {/* Left cream panel */}
       <div className="absolute inset-0 bg-cream" />
 
-      {/* Right crimson panel — diagonal clip */}
+      {/* Right crimson panel — diagonal clip (desktop only) */}
       <div
-        className="absolute inset-0 bg-primary"
+        className="absolute inset-0 bg-primary hidden lg:block"
         style={{ clipPath: "polygon(52% 0, 100% 0, 100% 100%, 40% 100%)" }}
       />
 
-      {/* Subtle dot grid on red panel */}
+      {/* Subtle dot grid on red panel (desktop only) */}
       <div
-        className="absolute inset-0 opacity-10"
+        className="absolute inset-0 opacity-10 hidden lg:block"
         style={{
           clipPath: "polygon(52% 0, 100% 0, 100% 100%, 40% 100%)",
           backgroundImage:
@@ -32,6 +32,9 @@ export default function Hero() {
           backgroundSize: "28px 28px",
         }}
       />
+
+      {/* Mobile: red accent bar at bottom */}
+      <div className="absolute bottom-12 left-0 right-0 h-1 bg-primary/20 lg:hidden" />
 
       {/* Decorative crimson arc on left side */}
       <div
@@ -43,7 +46,7 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 w-full pt-24 pb-28">
 
           {/* ── Left: School intro ─────────────────────────────────── */}
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center max-w-lg lg:max-w-none">
 
             {/* Established badge */}
             <motion.div
@@ -65,9 +68,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              St. Joseph&apos;s
-              <br />
-              <span className="text-primary/70">High School</span>
+              {siteConfig.name}
             </motion.h1>
 
             {/* Divider + motto */}
@@ -150,7 +151,7 @@ export default function Hero() {
               transition={{ duration: 1, delay: 0.4 }}
             >
               <span className="font-heading font-black text-[200px] text-cream/6 leading-none">
-                SJ
+                {siteConfig.shortName}
               </span>
             </motion.div>
 
@@ -189,9 +190,9 @@ export default function Hero() {
             >
               <div className="w-44 h-44 rounded-full bg-cream/10 border border-cream/15 flex items-center justify-center">
                 <div className="text-center text-cream">
-                  <p className="font-heading font-black text-5xl leading-none">SJ</p>
+                  <p className="font-heading font-black text-5xl leading-none">{siteConfig.shortName}</p>
                   <p className="font-body text-[9px] tracking-[0.3em] uppercase mt-1 opacity-70">
-                    Since 1947
+                    Since {siteConfig.established}
                   </p>
                 </div>
               </div>
