@@ -41,8 +41,8 @@ export default function VisionPage() {
             <h1 className="font-heading text-cream font-black text-5xl sm:text-6xl lg:text-[4.5rem] leading-tight mb-5">
               Vision &amp; Mission
             </h1>
-            <p className="font-body text-cream/50 text-base md:text-lg max-w-xl leading-relaxed">
-              The principles and purpose that guide everything we do at {siteConfig.name}.
+            <p className="font-body text-cream/50 text-base md:text-lg max-w-full leading-relaxed">
+              The educative community consisting of parents, teachers, pupils and management, work together for the ‘holistic’ development of the pupil in a family atmosphere at {siteConfig.name}.
             </p>
           </div>
         </section>

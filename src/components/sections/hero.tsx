@@ -23,17 +23,17 @@ export default function Hero() {
         }}
       />
 
-      {/* ── Left crimson overlay — diagonal right edge (desktop) ─────── */}
+      {/* ── Left crimson overlay — diagonal right edge (desktop) (lightened) ─────── */}
       <div
         className="absolute inset-0 hidden lg:block"
         style={{
-          background: "rgba(123,23,23,0.93)",
+          background: "rgba(123,23,23,0.75)",
           clipPath: "polygon(0 0, 52% 0, 40% 100%, 0 100%)",
         }}
       />
 
-      {/* ── Mobile: full crimson overlay ──────────────────────────────── */}
-      <div className="absolute inset-0 bg-primary/90 lg:hidden" />
+      {/* ── Mobile: full crimson overlay (lightened) ──────────────────────────────── */}
+      <div className="absolute inset-0 bg-primary/60 lg:hidden" />
 
       {/* ── Subtle dot grid on right image area (desktop) ─────────────── */}
       <div

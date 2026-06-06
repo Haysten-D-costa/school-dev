@@ -19,8 +19,10 @@ export const DEPARTMENTS: Department[] = [
   {
     label: "Leadership",
     members: [
-      { name: "Mrs. Angela Fernandes", role: "Principal",      email: "principal@auxiliumcarona.edu.in" },
-      { name: "Mr. John D'Souza",      role: "Vice Principal", email: "vp@auxiliumcarona.edu.in" },
+      { name: "Sr. Lavita Sequira", role: "Principal", email: "principal@auxiliumcarona.edu.in", photo: "/images/sections/about/faculty/principal.png" },
+      { name: "Sr. Antonette Desouza", role: "Manager", email: "vp@auxiliumcarona.edu.in", photo: "/images/sections/about/faculty/manager.png" },
+      { name: "Sr. Meenakshi D'Silva", role: "Provincial", email: "vp@auxiliumcarona.edu.in", photo: "/images/sections/about/faculty/provincial.png" },
+      { name: "Mother Chiara Cazzuola", role: "Mother General", email: "vp@auxiliumcarona.edu.in", photo: "/images/sections/about/faculty/mother-general.png" },
     ],
   },
   {

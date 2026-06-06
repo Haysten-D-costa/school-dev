@@ -72,8 +72,12 @@ export default function Footer() {
 
               {/* Logo + name */}
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 rounded-full bg-cream/12 border border-cream/20 flex items-center justify-center shrink-0">
-                  <GraduationCap size={24} className="text-cream" />
+                <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center shrink-0">
+                  <img
+                    src="/images/logo/logo.png"
+                    alt={`${siteConfig.shortName} logo`}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div>
                   <p className="font-heading font-bold text-cream text-base leading-tight tracking-wide">

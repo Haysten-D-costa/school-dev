@@ -9,7 +9,7 @@ export type Era = {
 
 // Opening paragraph on the history page
 export const HISTORY_INTRO =
-  "Auxilium Primary School traces its roots to 1947, when the Daughters of Mary Help of Christians first opened a school in the village of Carona, Goa. What began as a modest institution serving a small community has grown, over seven decades, into one of North Goa's most respected centres of primary education.";
+  "Auxilium Convent, Carona was founded in 1960 by the Salesian Sisters of Don Bosco, inspired by the educational vision of St. John Bosco and St. Mary Mazzarello. What began as a small educational institution has grown into a beacon of academic excellence and character formation.";
 
 // Three fact cards shown below the intro paragraph
 export const HISTORY_FOUNDER_STATS = [

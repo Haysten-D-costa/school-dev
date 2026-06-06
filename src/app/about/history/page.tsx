@@ -40,8 +40,8 @@ export default function HistoryPage() {
             <h1 className="font-heading text-cream font-black text-5xl sm:text-6xl lg:text-[4.5rem] leading-tight mb-5">
               Our History
             </h1>
-            <p className="font-body text-cream/50 text-base md:text-lg max-w-xl leading-relaxed">
-              Over seven decades of nurturing young minds in the heart of Carona, Goa.
+            <p className="font-body text-cream/50 text-base md:text-lg max-w-full leading-relaxed">
+              A journey of faith, education, and service spanning over six decades of excellence.
             </p>
           </div>
         </section>

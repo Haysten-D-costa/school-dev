@@ -124,9 +124,13 @@ export default function Navbar() {
             <button
               onClick={() => setLogoOpen(true)}
               aria-label="View school crest"
-              className="shrink-0 w-12 h-12 rounded-full bg-primary flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
+              className="shrink-0 w-14 h-14 rounded-full overflow-hidden transition-all duration-300 shadow-xl shadow-primary/20 hover:scale-105 hover:shadow-[0_15px_30px_rgba(59,130,246,0.18)]"
             >
-              <GraduationCap size={22} className="text-cream" />
+              <img
+                src="/images/logo/logo.png"
+                alt={`${siteConfig.name} logo`}
+                className="w-full h-full object-cover"
+              />
             </button>
             <Link href="/" className="min-w-0 flex flex-col leading-tight group">
               <span className="block font-heading font-bold text-sm sm:text-base tracking-wide text-primary transition-colors duration-200 group-hover:text-primary-light">
@@ -247,7 +251,7 @@ export default function Navbar() {
       {logoOpen && (
         <div
           className="fixed inset-0 z-200 flex items-center justify-center"
-          style={{ background: "rgba(74, 55, 40, 0.92)", backdropFilter: "blur(14px)" }}
+          style={{ background: "rgba(123,23,23,0.70)", backdropFilter: "blur(14px)" }}
           onClick={() => setLogoOpen(false)}
         >
           <button
@@ -265,9 +269,12 @@ export default function Navbar() {
             <div className="relative">
               <div className="absolute -inset-4 rounded-full border border-cream/10 animate-pulse" />
               <div className="absolute -inset-2 rounded-full border border-cream/20" />
-              <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-primary flex items-center justify-center shadow-2xl shadow-primary/40">
-                <GraduationCap size={90} className="text-cream md:hidden" />
-                <GraduationCap size={120} className="text-cream hidden md:block" />
+              <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-primary flex items-center justify-center shadow-2xl shadow-primary/40 overflow-hidden">
+                <img
+                  src="/images/logo/logo.png"
+                  alt={`${siteConfig.name} logo`}
+                  className="max-w-full max-h-full object-contain"
+                />
               </div>
             </div>
 
