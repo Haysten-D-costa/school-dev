@@ -4,21 +4,7 @@ import Link from "next/link";
 import { ArrowUp, MapPin, Phone, Mail, ExternalLink, GraduationCap } from "lucide-react";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/config/site";
-
-const QUICK_LINKS = [
-  { label: "Home",       href: "/" },
-  { label: "About Us",  href: "/about/history" },
-  { label: "Admissions", href: "/admissions" },
-  { label: "Gallery",   href: "/school-life/gallery" },
-  { label: "Contact",   href: "/contact" },
-];
-
-const SCHOOL_LIFE_LINKS = [
-  { label: "News & Events",   href: "/school-life/news" },
-  { label: "Sports",          href: "/school-life/sports" },
-  { label: "Clubs & Societies", href: "/school-life/clubs" },
-  { label: "Academic Results", href: "/academics/results" },
-];
+import { QUICK_LINKS, SCHOOL_LIFE_LINKS, ADMISSIONS_YEAR } from "@/data/navigation";
 
 const SOCIAL = [
   {
@@ -192,7 +178,7 @@ export default function Footer() {
               {/* Admissions CTA */}
               <div className="mt-8 p-4 border border-cream/15 rounded-sm">
                 <p className="font-body text-cream/60 text-xs mb-2">Admissions now open for</p>
-                <p className="font-heading font-bold text-cream text-sm mb-3">2025 – 2026</p>
+                <p className="font-heading font-bold text-cream text-sm mb-3">{ADMISSIONS_YEAR}</p>
                 <Link
                   href="/admissions"
                   className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-cream text-primary font-bold px-4 py-2 hover:bg-cream-dark transition-colors duration-200"
@@ -230,7 +216,7 @@ export default function Footer() {
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         aria-label="Scroll to top"
-        className={`fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-primary text-cream flex items-center justify-center shadow-lg transition-all duration-300 hover:bg-primary-light hover:scale-110 ${
+        className={`fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-cream text-primary flex items-center justify-center shadow-lg transition-all duration-300 hover:bg-cream/80 hover:scale-110 ${
           showTop
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 translate-y-3 pointer-events-none"

@@ -4,32 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Menu, X, ChevronDown, GraduationCap } from "lucide-react";
 import { siteConfig } from "@/config/site";
-
-const ABOUT_LINKS = [
-  { label: "Our History",         href: "/about/history" },
-  { label: "Principal's Message", href: "/about/principal" },
-  { label: "Vision & Mission",    href: "/about/vision" },
-  { label: "Our Faculty",         href: "/about/faculty" },
-];
-
-const ACADEMICS_LINKS = [
-  { label: "Primary School (Gr. I–V)",      href: "/academics/primary" },
-  { label: "Secondary School (Gr. VI–X)",   href: "/academics/secondary" },
-  { label: "Higher Secondary (Gr. XI–XII)", href: "/academics/higher-secondary" },
-  { label: "Co-Curricular Activities",      href: "/academics/activities" },
-];
-
-const LIFE_LINKS = [
-  { label: "Gallery",          href: "/school-life/gallery" },
-  { label: "Sports",           href: "/school-life/sports" },
-  { label: "Clubs & Societies",href: "/school-life/clubs" },
-  { label: "News & Events",    href: "/school-life/news" },
-];
-
-const NAV_LINKS = [
-  { label: "Admissions", href: "/admissions" },
-  { label: "Contact",    href: "/contact" },
-];
+import { ABOUT_LINKS, ACADEMICS_LINKS, LIFE_LINKS, NAV_LINKS } from "@/data/navigation";
 
 function NavDropdown({
   open,
@@ -171,7 +146,7 @@ export default function Navbar() {
               <button
                 aria-haspopup="true"
                 aria-expanded={openMenu === "about"}
-                className="relative flex items-center gap-1 font-body text-[13px] tracking-[0.1em] uppercase transition-colors duration-200 group text-neutral/70 hover:text-primary"
+                className="relative flex items-center gap-1 font-body text-[13px] tracking-widest uppercase transition-colors duration-200 group text-neutral/70 hover:text-primary"
               >
                 About Us
                 <ChevronDown size={13} className={`mt-px transition-transform duration-200 ${openMenu === "about" ? "rotate-180 text-primary" : ""}`} />
@@ -185,7 +160,7 @@ export default function Navbar() {
               <button
                 aria-haspopup="true"
                 aria-expanded={openMenu === "academics"}
-                className="relative flex items-center gap-1 font-body text-[13px] tracking-[0.1em] uppercase transition-colors duration-200 group text-neutral/70 hover:text-primary"
+                className="relative flex items-center gap-1 font-body text-[13px] tracking-widest uppercase transition-colors duration-200 group text-neutral/70 hover:text-primary"
               >
                 Academics
                 <ChevronDown size={13} className={`mt-px transition-transform duration-200 ${openMenu === "academics" ? "rotate-180 text-primary" : ""}`} />
@@ -199,7 +174,7 @@ export default function Navbar() {
               <button
                 aria-haspopup="true"
                 aria-expanded={openMenu === "life"}
-                className="relative flex items-center gap-1 font-body text-[13px] tracking-[0.1em] uppercase transition-colors duration-200 group text-neutral/70 hover:text-primary"
+                className="relative flex items-center gap-1 font-body text-[13px] tracking-widest uppercase transition-colors duration-200 group text-neutral/70 hover:text-primary"
               >
                 School Life
                 <ChevronDown size={13} className={`mt-px transition-transform duration-200 ${openMenu === "life" ? "rotate-180 text-primary" : ""}`} />
@@ -222,7 +197,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="relative font-body text-[13px] tracking-[0.1em] uppercase transition-colors duration-200 group text-neutral/70 hover:text-primary"
+                  className="relative font-body text-[13px] tracking-widest uppercase transition-colors duration-200 group text-neutral/70 hover:text-primary"
                 >
                   {link.label}
                   <span className="absolute -bottom-0.5 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
@@ -246,7 +221,7 @@ export default function Navbar() {
       {/* ── Mobile Menu ─────────────────────────────────────────────── */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-300 ${
-          mobileOpen ? "max-h-[600px] border-t border-primary/10" : "max-h-0"
+          mobileOpen ? "max-h-150 border-t border-primary/10" : "max-h-0"
         }`}
         style={{ background: "rgba(253, 246, 236, 0.98)", backdropFilter: "blur(20px)" }}
       >
@@ -259,7 +234,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="font-body text-[13px] tracking-[0.1em] uppercase py-3 border-b border-primary/8 last:border-0 transition-colors text-neutral/70 hover:text-primary"
+              className="font-body text-[13px] tracking-widest uppercase py-3 border-b border-primary/8 last:border-0 transition-colors text-neutral/70 hover:text-primary"
             >
               {link.label}
             </Link>

@@ -27,7 +27,7 @@ const INFO_CARDS = [
   {
     Icon: Clock,
     label: "Office Hours",
-    lines: ["Monday – Saturday", "9:00 AM – 4:00 PM"],
+    lines: [siteConfig.contact.officeHours.days, siteConfig.contact.officeHours.hours],
   },
 ];
 
@@ -235,14 +235,13 @@ export default function ContactPage() {
               </h2>
             </div>
             <div className="rounded-2xl overflow-hidden ring-1 ring-primary/10 shadow-md h-96 md:h-[460px]">
-              {/* Replace the src below with your Google Maps embed URL */}
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d73.9!3d15.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zQXV4aWxpdW0gUHJpbWFyeSBTY2hvb2w!5e0!3m2!1sen!2sin!4v1234567890"
+                src={siteConfig.contact.mapEmbedUrl}
                 className="w-full h-full border-0"
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Auxilium Primary School, Carona — Google Maps"
+                title={siteConfig.contact.mapTitle}
               />
             </div>
           </div>

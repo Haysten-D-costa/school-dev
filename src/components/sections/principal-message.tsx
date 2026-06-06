@@ -11,7 +11,7 @@ export default function PrincipalMessage() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="py-20 md:py-28 bg-cream" aria-label="Principal's message">
+    <section ref={ref} className="py-20 md:py-28 bg-white border-t border-primary/8" aria-label="Principal's message">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
 
         {/* Section label */}
@@ -80,21 +80,14 @@ export default function PrincipalMessage() {
             <div className="relative mb-8">
               <Quote size={42} className="absolute -top-2 -left-2 text-primary/10 fill-primary/10" />
               <blockquote className="font-heading italic text-primary/80 text-xl sm:text-2xl leading-relaxed pl-4 border-l-4 border-primary/30">
-                &ldquo;{PRINCIPAL_MESSAGE.shortQuote}&rdquo;
+                {PRINCIPAL_MESSAGE.shortQuote}
               </blockquote>
             </div>
 
-            {/* Message body */}
-            <div className="space-y-4">
-              {PRINCIPAL_MESSAGE.message
-                .trim()
-                .split("\n\n")
-                .map((para, i) => (
-                  <p key={i} className="font-body text-neutral/70 leading-relaxed text-base">
-                    {para.replace(/\n/g, " ")}
-                  </p>
-                ))}
-            </div>
+            {/* Message preview */}
+            <p className="font-body text-neutral/70 leading-relaxed text-base">
+              {PRINCIPAL_MESSAGE.preview}
+            </p>
 
             {/* Read more */}
             <Link
