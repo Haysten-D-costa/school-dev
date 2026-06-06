@@ -91,7 +91,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="font-heading font-bold text-cream text-base leading-tight tracking-wide">
-                    ST. JOSEPH&apos;S HIGH SCHOOL
+                    {siteConfig.name.toUpperCase()}
                   </p>
                   <p className="font-body text-cream/40 text-xs tracking-widest mt-0.5">
                     {siteConfig.location}
@@ -209,7 +209,7 @@ export default function Footer() {
         <div className="border-t border-cream/8">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-4 flex flex-col sm:flex-row items-center justify-between gap-1.5">
             <p className="font-body text-cream/30 text-xs text-center sm:text-left">
-              &copy; {new Date().getFullYear()} St. Joseph&apos;s High School, Mapusa, Goa. All rights reserved.
+              &copy; {new Date().getFullYear()} {siteConfig.name}, {siteConfig.location}. All rights reserved.
             </p>
             <p className="font-body text-cream/20 text-xs italic">
               Designed by{" "}
