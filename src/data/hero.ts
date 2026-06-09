@@ -1,7 +1,7 @@
 // ── Hero section content ──────────────────────────────────────────────────────
-// Replace HERO_IMAGE with the actual school photo path once available.
+// Use the actual hero photo asset from public/images.
 
-export const HERO_IMAGE = "https://picsum.photos/seed/schoolbuilding/1400/900";
+export const HERO_IMAGE = "/images/sections/school-images/hero-school.png";
 
 export const HERO_BUTTONS = {
   primary:   { label: "Explore School",  href: "/school-life/gallery" },

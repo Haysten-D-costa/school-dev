@@ -135,11 +135,11 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <Field label="Full Name"     name="name"  placeholder="Maria D&apos;Souza"           value={form.name}  onChange={handleInput} required />
-        <Field label="Email Address" name="email" type="email" placeholder="yourname@example.com" value={form.email} onChange={handleInput} required />
+        <Field label="Full Name"     name="name"  placeholder="Your Name"           value={form.name}  onChange={handleInput} required />
+        <Field label="Email Address" name="email" type="email" placeholder="Your Email" value={form.email} onChange={handleInput} required />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <Field       label="Phone Number" name="phone"   type="tel" placeholder="+91 98765 43210" value={form.phone}   onChange={handleInput} />
+        <Field       label="Phone Number" name="phone"   type="tel" placeholder="Your Phone" value={form.phone}   onChange={handleInput} />
         <SelectField label="Subject"      name="subject"             value={form.subject} onChange={handleSelect} />
       </div>
       <TextareaField label="Your Message" name="message" placeholder="How can we help you?" value={form.message} onChange={handleInput} />

@@ -3,10 +3,10 @@ export type NavLink = { label: string; href: string };
 // ── Navbar dropdowns ──────────────────────────────────────────────────────────
 
 export const ABOUT_LINKS: NavLink[] = [
-  { label: "Our History",         href: "/about/history" },
-  { label: "Principal's Message", href: "/about/principal" },
-  { label: "Vision & Mission",    href: "/about/vision" },
-  { label: "Our Faculty",         href: "/about/faculty" },
+  { label: "Our History",     href: "/about/history" },
+  { label: "Leadership Desk", href: "/about/leadership" },
+  { label: "Vision & Mission", href: "/about/vision" },
+  { label: "Our Faculty",     href: "/about/faculty" },
 ];
 
 // Reflects current school: Nursery–Gr. 1 active, Gr. 2–4 coming soon.

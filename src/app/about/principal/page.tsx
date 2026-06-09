@@ -3,7 +3,7 @@ import { Navbar, Footer } from "@/components/layout";
 import { PRINCIPAL_MESSAGE } from "@/data/principal-message";
 import { Quote } from "lucide-react";
 
-export const metadata: Metadata = { title: "Principal's Message" };
+export const metadata: Metadata = { title: "Leadership Desk" };
 
 const GRID_STYLE: React.CSSProperties = {
   backgroundImage:
@@ -33,10 +33,10 @@ export default function PrincipalPage() {
               <span className="block h-px w-8 bg-cream/30" />
             </div>
             <h1 className="font-heading text-cream font-black text-5xl sm:text-6xl lg:text-[4.5rem] leading-tight mb-5">
-              Principal&apos;s Message
+              Leadership Desk
             </h1>
             <p className="font-body text-cream/50 text-base md:text-lg max-w-xl leading-relaxed">
-              A word from the desk of {PRINCIPAL_MESSAGE.name}.
+              A word from the Leadership Desk.
             </p>
           </div>
         </section>

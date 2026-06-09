@@ -140,10 +140,10 @@ export default function Hero() {
           {/* ── Right: clean image + floating cards ────────────────── */}
           <div className="hidden lg:flex flex-col items-center justify-center relative">
 
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 flex flex-col gap-3">
+            <div className="absolute right-6 top-1/2 -translate-y-1/2 flex flex-col gap-3">
               <motion.div
                 className="bg-cream rounded-xl px-5 py-3 shadow-xl border-l-4 border-primary"
-                initial={{ opacity: 0, x: -24 }}
+                initial={{ opacity: 0, x: 24 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.85 }}
               >
@@ -157,7 +157,7 @@ export default function Hero() {
 
               <motion.div
                 className="bg-cream rounded-xl px-5 py-3 shadow-xl border-l-4 border-accent"
-                initial={{ opacity: 0, x: -24 }}
+                initial={{ opacity: 0, x: 24 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 1.05 }}
               >

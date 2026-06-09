@@ -1,7 +1,7 @@
 export const siteConfig = {
-  name: "Auxilium Convent, Carona",
+  name: "Auxilium Convent",
   shortName: "Auxilium",
-  location: "Carona, Goa, India",
+  location: "Carona, Goa",
   established: "1947",
   motto: "Empowering young minds",
   description:

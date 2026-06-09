@@ -11,7 +11,7 @@ export default function PrincipalMessage() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="py-20 md:py-28 bg-white border-t border-primary/8" aria-label="Principal's message">
+    <section ref={ref} className="py-20 md:py-28 bg-white border-t border-primary/8" aria-label="Leadership desk">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
 
         {/* Section label */}
@@ -27,7 +27,7 @@ export default function PrincipalMessage() {
               Leadership
             </p>
             <h2 className="font-heading font-bold text-primary text-2xl sm:text-3xl">
-              From the Principal&apos;s Desk
+              From the Leadership Desk
             </h2>
           </div>
         </motion.div>
@@ -91,7 +91,7 @@ export default function PrincipalMessage() {
 
             {/* Read more */}
             <Link
-              href="/about/principal"
+              href="/about/leadership"
               className="inline-flex items-center gap-2 mt-8 font-body text-[13px] tracking-[0.12em] uppercase text-primary font-semibold group"
             >
               Read Full Message
