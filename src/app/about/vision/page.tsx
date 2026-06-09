@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
 import { Navbar, Footer } from "@/components/layout";
 import { siteConfig } from "@/config/site";
-import { Eye, Target, Heart, Star, Users, BookOpen } from "lucide-react";
+import { Eye, Target, Heart, Star, Users, BookOpen, Quote } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { VISION, MISSION, VALUES, COMMITMENTS } from "@/data/values";
+import {
+  VISION_FIGURE,
+  MISSION_FIGURE,
+  VISION_PARAGRAPHS,
+  MISSION,
+  VALUES,
+  SALESIAN_PILLARS,
+} from "@/data/values";
+import type { CoreValue } from "@/data/values";
 
 export const metadata: Metadata = { title: "Vision & Mission" };
 
@@ -16,6 +24,71 @@ const GRID_STYLE: React.CSSProperties = {
     "linear-gradient(rgba(253,246,236,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(253,246,236,0.04) 1px, transparent 1px)",
   backgroundSize: "60px 60px",
 };
+
+type Figure = { name: string; role: string; image: string; quote: string };
+
+function PhotoCol({ figure }: { figure: Figure }) {
+  return (
+    <div className="lg:col-span-4 flex flex-col items-center lg:items-start">
+      <div className="relative w-64 lg:w-full shrink-0">
+        <div className="absolute -top-3 -left-3 w-full h-full border-2 border-primary/20 rounded-sm" />
+        <div className="relative w-full aspect-3/4 bg-cream-dark rounded-sm overflow-hidden flex items-center justify-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={figure.image}
+            alt={figure.name}
+            className="w-full h-full object-cover object-top"
+          />
+        </div>
+        <div className="absolute bottom-0 right-0 w-10 h-10 bg-primary" />
+      </div>
+      <div className="mt-6 text-center lg:text-left">
+        <p className="font-heading font-bold text-primary text-xl">{figure.name}</p>
+        <p className="font-body text-[12px] tracking-[0.12em] uppercase text-neutral/50 mt-1.5">
+          {figure.role}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function ContentCol({
+  label,
+  heading,
+  quote,
+  paragraphs,
+}: {
+  label: string;
+  heading: string;
+  quote: string;
+  paragraphs: string[];
+}) {
+  return (
+    <div className="lg:col-span-8">
+      <p className="font-body text-[10px] font-bold tracking-[0.35em] uppercase text-primary/50 mb-2">
+        {label}
+      </p>
+      <h2 className="font-heading font-bold text-primary text-3xl md:text-4xl mb-8">
+        {heading}
+      </h2>
+
+      <div className="mb-8">
+        <Quote size={28} className="text-primary/20 fill-primary/20 mb-3" />
+        <blockquote className="font-heading italic text-primary/75 text-lg sm:text-xl leading-relaxed pl-4 border-l-4 border-primary/25">
+          {quote}
+        </blockquote>
+      </div>
+
+      <div className="space-y-5">
+        {paragraphs.map((para, i) => (
+          <p key={i} className="font-body text-neutral/70 text-base leading-relaxed">
+            {para}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function VisionPage() {
   return (
@@ -41,57 +114,46 @@ export default function VisionPage() {
             <h1 className="font-heading text-cream font-black text-5xl sm:text-6xl lg:text-[4.5rem] leading-tight mb-5">
               Vision &amp; Mission
             </h1>
-            <p className="font-body text-cream/50 text-base md:text-lg max-w-full leading-relaxed">
-              The educative community consisting of parents, teachers, pupils and management, work together for the ‘holistic’ development of the pupil in a family atmosphere at {siteConfig.name}.
+            <p className="font-body text-cream/50 text-base md:text-lg max-w-2xl leading-relaxed">
+              The educative community consisting of parents, teachers, pupils and management, work together
+              for the holistic development of the pupil in a family atmosphere at {siteConfig.name}.
             </p>
           </div>
         </section>
 
-        {/* ── Vision & Mission ──────────────────────────────────────── */}
-        <section className="bg-cream py-16 md:py-24">
+        {/* ── Vision ────────────────────────────────────────────────── */}
+        <section className="bg-cream py-16 md:py-24 border-b border-primary/8">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+              <PhotoCol figure={VISION_FIGURE} />
+              <ContentCol
+                label="Our Direction"
+                heading="Our Vision"
+                quote={VISION_FIGURE.quote}
+                paragraphs={VISION_PARAGRAPHS}
+              />
+            </div>
+          </div>
+        </section>
 
-              {/* Vision */}
-              <div className="bg-primary rounded-2xl p-8 md:p-10">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-cream/10 flex items-center justify-center shrink-0">
-                    <Eye size={18} className="text-cream" />
-                  </div>
-                  <div>
-                    <p className="font-body text-[10px] font-bold tracking-[0.3em] uppercase text-cream/40">Our</p>
-                    <p className="font-heading font-bold text-cream text-lg leading-none">Vision</p>
-                  </div>
-                </div>
-                <p className="font-heading italic text-cream/80 text-lg md:text-xl leading-relaxed">
-                  &ldquo;{VISION}&rdquo;
-                </p>
-              </div>
-
-              {/* Mission */}
-              <div className="bg-white rounded-2xl border border-primary/8 shadow-sm p-8 md:p-10">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-primary/8 flex items-center justify-center shrink-0">
-                    <Target size={18} className="text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-body text-[10px] font-bold tracking-[0.3em] uppercase text-neutral/40">Our</p>
-                    <p className="font-heading font-bold text-primary text-lg leading-none">Mission</p>
-                  </div>
-                </div>
-                <p className="font-body text-neutral/65 text-base leading-relaxed">
-                  {MISSION}
-                </p>
-              </div>
-
+        {/* ── Mission ───────────────────────────────────────────────── */}
+        <section className="bg-white py-16 md:py-24 border-b border-primary/8">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+              <ContentCol
+                label="Our Purpose"
+                heading="Our Mission"
+                quote={MISSION_FIGURE.quote}
+                paragraphs={[MISSION]}
+              />
+              <PhotoCol figure={MISSION_FIGURE} />
             </div>
           </div>
         </section>
 
         {/* ── Core Values ───────────────────────────────────────────── */}
-        <section className="bg-white py-14 md:py-20 border-t border-primary/8">
+        <section className="bg-cream py-14 md:py-20 border-b border-primary/8">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-
             <div className="mb-12">
               <p className="font-body text-[10px] font-bold tracking-[0.35em] uppercase text-primary/50 mb-2">
                 What We Stand For
@@ -101,13 +163,13 @@ export default function VisionPage() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {VALUES.map(({ icon, title, description }) => {
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {VALUES.map(({ icon, title, description }: CoreValue) => {
                 const Icon = VALUES_ICON_MAP[icon];
                 return (
                   <div
                     key={title}
-                    className="group bg-cream rounded-xl border border-primary/8 p-6 hover:border-primary/20 hover:shadow-md transition-all duration-200"
+                    className="group bg-white rounded-xl border border-primary/8 p-6 hover:border-primary/20 hover:shadow-md transition-all duration-200"
                   >
                     <div className="w-10 h-10 rounded-full bg-primary/8 flex items-center justify-center mb-4 group-hover:bg-primary/12 transition-colors duration-200">
                       <Icon size={17} className="text-primary" />
@@ -121,38 +183,66 @@ export default function VisionPage() {
           </div>
         </section>
 
-        {/* ── Our Commitments ───────────────────────────────────────── */}
-        <section className="bg-cream py-14 md:py-20 border-t border-primary/8">
+        {/* ── Salesian Pillars ──────────────────────────────────────── */}
+        <section className="bg-white py-14 md:py-20 border-b border-primary/8">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
-              {/* Left */}
-              <div>
-                <p className="font-body text-[10px] font-bold tracking-[0.35em] uppercase text-primary/50 mb-2">
-                  How We Live Our Mission
-                </p>
-                <h2 className="font-heading text-primary font-bold text-2xl md:text-3xl mb-4">
-                  Our Commitments
-                </h2>
-                <p className="font-body text-neutral/60 text-base leading-relaxed">
-                  Our vision and mission are not simply words — they are lived out daily in our classrooms,
-                  our corridors, and our community. These are the commitments that shape everything we do.
-                </p>
-              </div>
-
-              {/* Right: commitment list */}
-              <div className="space-y-4">
-                {COMMITMENTS.map((item, i) => (
-                  <div key={i} className="flex items-start gap-4">
-                    <span className="font-heading font-black text-primary/15 text-2xl leading-none shrink-0 w-7 pt-0.5">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <p className="font-body text-neutral/65 text-sm leading-relaxed pt-1">{item}</p>
-                  </div>
-                ))}
-              </div>
-
+            <div className="mb-12">
+              <p className="font-body text-[10px] font-bold tracking-[0.35em] uppercase text-primary/50 mb-2">
+                The Salesian Method
+              </p>
+              <h2 className="font-heading text-primary font-bold text-2xl md:text-3xl">
+                Three Pillars of Our Education
+              </h2>
             </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-primary/10 rounded-xl overflow-hidden">
+              {SALESIAN_PILLARS.map((pillar, i) => (
+                <div
+                  key={pillar.title}
+                  className={`relative p-8 md:p-10 flex flex-col gap-6 ${
+                    i === 1
+                      ? "bg-primary text-cream"
+                      : "bg-white text-neutral"
+                  } ${i < 2 ? "md:border-r border-primary/10" : ""} border-b md:border-b-0 border-primary/10 last:border-b-0`}
+                >
+                  {/* Roman numeral */}
+                  <span
+                    className={`font-heading font-black text-6xl leading-none select-none ${
+                      i === 1 ? "text-cream/10" : "text-primary/8"
+                    }`}
+                  >
+                    {pillar.numeral}
+                  </span>
+
+                  <div>
+                    <p
+                      className={`font-body text-[11px] tracking-[0.25em] uppercase mb-1 ${
+                        i === 1 ? "text-cream/50" : "text-primary/45"
+                      }`}
+                    >
+                      {pillar.subtitle}
+                    </p>
+                    <h3
+                      className={`font-heading font-bold text-2xl ${
+                        i === 1 ? "text-cream" : "text-primary"
+                      }`}
+                    >
+                      {pillar.title}
+                    </h3>
+                  </div>
+
+                  <p
+                    className={`font-body text-sm leading-relaxed ${
+                      i === 1 ? "text-cream/70" : "text-neutral/60"
+                    }`}
+                  >
+                    {pillar.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+
           </div>
         </section>
 

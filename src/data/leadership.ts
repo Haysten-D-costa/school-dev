@@ -32,18 +32,6 @@ export const LEADERSHIP: LeadershipMember[] = [
     ],
   },
   {
-    name: "Mother Chiara Cazzuola",
-    role: "Our Mother General",
-    email: "mothergeneral@auxiliumcarona.edu.in",
-    photo: "/images/sections/about/faculty/mother-general.png",
-    quote: "I trust the Lord and I entrust myself to Mary Help of Christians. For this, I say YES!",
-    message: [
-      "Mother Chiara Cazzuola is the leader of the Salesian Sisters all over the world.",
-      "She is the 10th person to take the place of St. Mary Mazzarello in guiding our big Salesian family.",
-      "She loves young people very much and works hard to help them grow happy, kind, and strong in faith. Mother Chiara is cheerful, friendly, and always ready to work together with others.",
-    ],
-  },
-  {
     name: "Sr. Meenakshi D'Silva",
     role: "Our Provincial",
     email: "provincial@auxiliumcarona.edu.in",
@@ -54,6 +42,18 @@ export const LEADERSHIP: LeadershipMember[] = [
       "She is the 8th Provincial and has spent many years helping children and young people through education.",
       "She has taken care of many important jobs, like looking after the Province’s needs, leading communities, working with youth, and guiding other Sisters.",
       "Sister Meenakshi loves nature and teaching, and she encourages everyone to care for the Earth and to learn with joy.",
+    ],
+  },
+  {
+    name: "Mother Chiara Cazzuola",
+    role: "Our Mother General",
+    email: "mothergeneral@auxiliumcarona.edu.in",
+    photo: "/images/sections/about/faculty/mother-general.png",
+    quote: "I trust the Lord and I entrust myself to Mary Help of Christians. For this, I say YES!",
+    message: [
+      "Mother Chiara Cazzuola is the leader of the Salesian Sisters all over the world.",
+      "She is the 10th person to take the place of St. Mary Mazzarello in guiding our big Salesian family.",
+      "She loves young people very much and works hard to help them grow happy, kind, and strong in faith. Mother Chiara is cheerful, friendly, and always ready to work together with others.",
     ],
   },
 ];

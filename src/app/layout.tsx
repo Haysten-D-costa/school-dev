@@ -8,6 +8,10 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  icons: {
+    icon: "/images/logo/logo.png",
+    apple: "/images/logo/logo.png",
+  },
 };
 
 export default function RootLayout({

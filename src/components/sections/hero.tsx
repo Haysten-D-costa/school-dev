@@ -1,41 +1,101 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import { TICKER_ITEMS } from "@/data/announcements";
-import { HERO_IMAGE, HERO_BUTTONS, HERO_STATS, HERO_CARDS } from "@/data/hero";
+import { HERO_BUTTONS, HERO_STATS, HERO_CARDS } from "@/data/hero";
 import { siteConfig } from "@/config/site";
 
 const TICKER_DOUBLED = [...TICKER_ITEMS, ...TICKER_ITEMS];
+const AUTO_INTERVAL = 5000;
+
+const SLIDES = [
+  {
+    image: "/images/sections/school-images/hero-school.png",
+    quote: "Education is a matter of the heart, of which God alone is the master.",
+    author: "St. John Bosco",
+  },
+  {
+    image: "/images/sections/school-images/slide-2.jpg",
+    quote: "The roots of education are bitter, but the fruit is sweet.",
+    author: "Aristotle",
+  },
+  {
+    image: "/images/sections/school-images/slide-3.jpg",
+    quote: "A teacher affects eternity; he can never tell where his influence stops.",
+    author: "Henry Adams",
+  },
+  {
+    image: "/images/sections/school-images/slide-4.jpg",
+    quote: "Education is not the filling of a pail, but the lighting of a fire.",
+    author: "W.B. Yeats",
+  },
+  {
+    image: "/images/sections/school-images/slide-5.jpg",
+    quote: "The purpose of education is to replace an empty mind with an open one.",
+    author: "Malcolm Forbes",
+  },
+];
 
 export default function Hero() {
+  const [current, setCurrent] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const startAutoPlay = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % SLIDES.length);
+    }, AUTO_INTERVAL);
+  }, []);
+
+  useEffect(() => {
+    startAutoPlay();
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  }, [startAutoPlay]);
+
+  const go = useCallback((index: number) => {
+    setCurrent((index + SLIDES.length) % SLIDES.length);
+    startAutoPlay();
+  }, [startAutoPlay]);
+
   return (
     <section className="relative w-full lg:min-h-screen overflow-hidden" aria-label="Hero">
 
-      {/* ── Full-width background image ──────────────────────────────── */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `url('${HERO_IMAGE}')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
+      {/* ── Slide backgrounds ────────────────────────────────────────── */}
+      <AnimatePresence>
+        <motion.div
+          key={current}
+          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.9 }}
+          style={{
+            backgroundImage: `url('${SLIDES[current].image}')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+      </AnimatePresence>
 
-      {/* ── Left crimson overlay — diagonal right edge (desktop) (lightened) ─────── */}
-      <div
+      {/* ── Dark overlay over full image ─────────────────────────────── */}
+      <div className="absolute inset-0 bg-black/40" />
+
+      {/* ── Left crimson overlay — wipes in once on load ─────────────── */}
+      <motion.div
         className="absolute inset-0 hidden lg:block"
-        style={{
-          background: "rgba(123,23,23,0.75)",
-          clipPath: "polygon(0 0, 52% 0, 40% 100%, 0 100%)",
-        }}
+        initial={{ clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)" }}
+        animate={{ clipPath: "polygon(0 0, 52% 0, 40% 100%, 0 100%)" }}
+        transition={{ duration: 0.65, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+        style={{ background: "rgba(123,23,23,0.75)" }}
       />
 
-      {/* ── Mobile: full crimson overlay (lightened) ──────────────────────────────── */}
+      {/* ── Mobile: full crimson overlay ─────────────────────────────── */}
       <div className="absolute inset-0 bg-primary/60 lg:hidden" />
 
-      {/* ── Subtle dot grid on right image area (desktop) ─────────────── */}
+      {/* ── Dot grid on right image area ─────────────────────────────── */}
       <div
         className="absolute inset-0 opacity-10 hidden lg:block"
         style={{
@@ -50,9 +110,9 @@ export default function Hero() {
 
       {/* ── Content grid ─────────────────────────────────────────────── */}
       <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 min-h-screen flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 w-full pt-24 pb-28">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 w-full pt-24 pb-36">
 
-          {/* ── Left: text on crimson overlay ──────────────────────── */}
+          {/* ── Left: text ───────────────────────────────────────────── */}
           <div className="flex flex-col justify-center max-w-lg lg:max-w-none">
 
             <motion.div
@@ -135,11 +195,31 @@ export default function Hero() {
                 </div>
               ))}
             </motion.div>
+
+            {/* ── Slide quote ────────────────────────────────────────── */}
+            <div className="mt-10 pt-8 border-t border-cream/10 min-h-14">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <p className="font-body italic text-cream/50 text-sm leading-relaxed">
+                    &ldquo;{SLIDES[current].quote}&rdquo;
+                  </p>
+                  <p className="font-body text-[11px] tracking-[0.15em] uppercase text-cream/30 mt-1.5">
+                    — {SLIDES[current].author}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
           </div>
 
-          {/* ── Right: clean image + floating cards ────────────────── */}
+          {/* ── Right: floating cards ────────────────────────────────── */}
           <div className="hidden lg:flex flex-col items-center justify-center relative">
-
             <div className="absolute right-6 top-1/2 -translate-y-1/2 flex flex-col gap-3">
               <motion.div
                 className="bg-cream rounded-xl px-5 py-3 shadow-xl border-l-4 border-primary"
@@ -169,12 +249,66 @@ export default function Hero() {
                 </p>
               </motion.div>
             </div>
-
           </div>
+
         </div>
       </div>
 
-      {/* ── Announcement Ticker ──────────────────────────────────────────── */}
+      {/* ── Carousel controls ────────────────────────────────────────── */}
+      <div className="absolute bottom-20 left-0 right-0 flex items-center">
+
+        {/* Spacer left */}
+        <div className="flex-1" />
+
+        {/* Centered: prev · dots · next */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => go(current - 1)}
+            aria-label="Previous slide"
+            className="w-11 h-11 rounded-full border border-cream/40 bg-black/20 backdrop-blur-sm flex items-center justify-center text-cream/80 hover:text-cream hover:border-cream/70 hover:bg-black/30 transition-all duration-200"
+          >
+            <ChevronLeft size={16} />
+          </button>
+
+          <div className="flex items-center gap-2">
+            {SLIDES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => go(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={`transition-all duration-300 rounded-full ${
+                  i === current
+                    ? "w-6 h-2 bg-accent"
+                    : "w-2 h-2 bg-cream/40 hover:bg-cream/70"
+                }`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={() => go(current + 1)}
+            aria-label="Next slide"
+            className="w-11 h-11 rounded-full border border-cream/40 bg-black/20 backdrop-blur-sm flex items-center justify-center text-cream/80 hover:text-cream hover:border-cream/70 hover:bg-black/30 transition-all duration-200"
+          >
+            <ChevronRight size={16} />
+          </button>
+        </div>
+
+        {/* Right: slide counter pinned to edge */}
+        <div className="flex-1 flex justify-end pr-6 sm:pr-10 lg:pr-16">
+          <div className="flex items-baseline gap-0.5">
+            <span className="font-heading font-bold text-accent text-xl leading-none">
+              {String(current + 1).padStart(2, "0")}
+            </span>
+            <span className="font-body text-cream/35 text-xs ml-1">
+              / {String(SLIDES.length).padStart(2, "0")}
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      {/* ── Announcement Ticker ──────────────────────────────────────── */}
       <div className="absolute bottom-0 left-0 right-0 h-12 bg-primary/90 backdrop-blur-sm flex items-center overflow-hidden border-t border-cream/10">
         <div className="shrink-0 px-4 border-r border-cream/20 flex items-center h-full bg-primary">
           <span className="font-body text-[10px] tracking-[0.3em] uppercase text-cream/70 whitespace-nowrap">
@@ -192,6 +326,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
     </section>
   );
 }

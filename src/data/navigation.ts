@@ -18,8 +18,6 @@ export const ACADEMICS_LINKS: NavLink[] = [
 
 export const LIFE_LINKS: NavLink[] = [
   { label: "Gallery",            href: "/school-life/gallery" },
-  { label: "Sports",             href: "/school-life/sports" },
-  { label: "Clubs & Societies",  href: "/school-life/clubs" },
   { label: "News & Events",      href: "/school-life/news" },
 ];
 

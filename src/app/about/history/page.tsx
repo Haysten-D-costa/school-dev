@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Navbar, Footer } from "@/components/layout";
 import { siteConfig } from "@/config/site";
+import { Quote } from "lucide-react";
 import {
   HISTORY_INTRO,
   HISTORY_FOUNDER_STATS,
-  HISTORY_ERAS,
+  TIMELINE,
+  FOUNDERS,
   HISTORY_CLOSING,
 } from "@/data/history";
 
@@ -40,76 +42,153 @@ export default function HistoryPage() {
             <h1 className="font-heading text-cream font-black text-5xl sm:text-6xl lg:text-[4.5rem] leading-tight mb-5">
               Our History
             </h1>
-            <p className="font-body text-cream/50 text-base md:text-lg max-w-full leading-relaxed">
+            <p className="font-body text-cream/50 text-base md:text-lg max-w-2xl leading-relaxed">
               A journey of faith, education, and service spanning over six decades of excellence.
             </p>
           </div>
         </section>
 
-        {/* ── Intro ─────────────────────────────────────────────────── */}
+        {/* ── Intro + Stats ─────────────────────────────────────────── */}
         <section className="bg-cream py-16 md:py-20">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
 
-            <p className="font-body text-neutral/65 text-base md:text-lg leading-relaxed max-w-3xl mb-14">
+            <p className="font-body text-neutral/65 text-base md:text-lg leading-relaxed max-w-auto mb-14">
               {HISTORY_INTRO}
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-              {HISTORY_FOUNDER_STATS.map((item) => (
-                <div key={item.label} className="bg-white rounded-xl border border-primary/8 shadow-sm px-6 py-5">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              {HISTORY_FOUNDER_STATS.map((stat) => (
+                <div key={stat.label} className="bg-white border border-primary/8 rounded-xl px-6 py-5">
                   <p className="font-body text-[10px] font-bold tracking-[0.25em] uppercase text-neutral/40 mb-1.5">
-                    {item.label}
+                    {stat.label}
                   </p>
-                  <p className="font-heading font-bold text-primary text-xl leading-tight">
-                    {item.value}
+                  <p className="font-heading font-bold text-primary text-2xl leading-tight">
+                    {stat.value}
                   </p>
-                  <p className="font-body text-sm text-neutral/50 mt-0.5">{item.sub}</p>
+                  {stat.sub && (
+                    <p className="font-body text-sm text-neutral/50 mt-0.5">{stat.sub}</p>
+                  )}
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── Era Chapters ──────────────────────────────────────────── */}
-        {HISTORY_ERAS.map((era, i) => (
-          <section
-            key={era.label}
-            className={`py-14 md:py-20 border-t border-primary/8 ${i % 2 === 0 ? "bg-cream" : "bg-white"}`}
-          >
-            <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-              <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-16">
+        {/* ── Timeline ──────────────────────────────────────────────── */}
+        <section className="bg-white py-20 md:py-28 border-t border-primary/8">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
 
-                {/* Left: label + decorative year */}
-                <div className="lg:col-span-1">
-                  <p className="font-body text-[10px] font-bold tracking-[0.3em] uppercase text-primary/50 mb-1">
-                    {era.label}
-                  </p>
-                  <p className="font-body text-sm text-neutral/40 tracking-wide mb-6">
-                    {era.period}
-                  </p>
-                  <span className="hidden lg:block font-heading font-black text-[5.5rem] text-primary/6 leading-none select-none">
-                    {era.period.slice(0, 4)}
-                  </span>
-                </div>
+            {/* Section header */}
+            <div className="mb-20">
+              <p className="font-body text-[10px] font-bold tracking-[0.35em] uppercase text-primary/50 mb-2">
+                Key Milestones
+              </p>
+              <h2 className="font-heading font-bold text-primary text-3xl md:text-4xl mb-4">
+                Our Journey Through Time
+              </h2>
+              <p className="font-body text-neutral/55 text-base max-w-xl leading-relaxed">
+                Key milestones and achievements that have shaped our school&apos;s history and legacy.
+              </p>
+            </div>
 
-                {/* Right: heading + text */}
-                <div className="lg:col-span-3">
-                  <h2 className="font-heading text-primary font-bold text-2xl md:text-3xl leading-snug mb-7">
-                    {era.heading}
-                  </h2>
-                  <div className="space-y-4">
-                    {era.paragraphs.map((p, j) => (
-                      <p key={j} className="font-body text-neutral/65 text-base leading-relaxed">
-                        {p}
+            {/* Timeline body */}
+            <div className="relative max-w-4xl">
+
+              {/* Continuous vertical line */}
+              <div className="absolute left-2 sm:left-40 top-0 bottom-0 w-px bg-primary/15" />
+
+              <div className="flex flex-col">
+                {TIMELINE.map((item, i) => (
+                  <div
+                    key={i}
+                    data-timeline-item
+                    className={`relative flex items-start ${i < TIMELINE.length - 1 ? "pb-16 md:pb-20" : ""}`}
+                  >
+                    {/* Date label — right-aligned in fixed 10rem column, desktop only */}
+                    <div className="w-40 shrink-0 pt-1 pr-7 text-right hidden sm:block">
+                      <p className="font-body text-[11px] font-bold tracking-[0.2em] uppercase text-primary/60 leading-snug">
+                        {item.date}
                       </p>
-                    ))}
+                    </div>
+
+                    {/* Dot on the line */}
+                    <div className="absolute left-2 sm:left-40 top-2 -translate-x-1/2 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-primary border-2 border-white" />
+
+                    {/* Content */}
+                    <div className="flex-1 pl-7 sm:pl-10">
+                      {/* Mobile: date above heading */}
+                      <p className="sm:hidden font-body text-[11px] font-bold tracking-[0.2em] uppercase text-primary/55 mb-2">
+                        {item.date}
+                      </p>
+                      <h3 className="font-heading font-bold text-primary text-xl md:text-2xl leading-snug mb-3">
+                        {item.heading}
+                      </h3>
+                      <p className="font-body text-neutral/60 text-base leading-relaxed max-w-lg">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ── Our Founders ──────────────────────────────────────────── */}
+        <section className="bg-cream py-16 md:py-24 border-t border-primary/8">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+
+            <div className="mb-14">
+              <p className="font-body text-[10px] font-bold tracking-[0.35em] uppercase text-primary/50 mb-2">
+                The Visionary Saints
+              </p>
+              <h2 className="font-heading font-bold text-primary text-3xl md:text-4xl">
+                Our Founders
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 lg:divide-x lg:divide-primary/10">
+              {FOUNDERS.map((founder, i) => (
+                <div
+                  key={founder.name}
+                  className={`flex flex-col gap-8 ${i === 0 ? "lg:pr-16 pb-14 lg:pb-0 border-b lg:border-b-0 border-primary/10" : "lg:pl-16"}`}
+                >
+                  {/* Framed photo */}
+                  <div className="relative w-44 shrink-0">
+                    <div className="absolute -top-3 -left-3 w-full h-full border-2 border-primary/20 rounded-sm" />
+                    <div className="relative w-full aspect-square bg-cream-dark rounded-sm overflow-hidden">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={founder.image}
+                        alt={founder.name}
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+                    <div className="absolute bottom-0 right-0 w-8 h-8 bg-primary" />
+                  </div>
+
+                  {/* Quote then identity */}
+                  <div>
+                    <Quote size={22} className="text-primary/15 fill-primary/15 mb-3" />
+                    <blockquote className="font-heading italic text-primary/65 text-base leading-relaxed pl-4 border-l-4 border-primary/20 mb-6">
+                      {founder.quote}
+                    </blockquote>
+
+                    <div className="w-10 h-px bg-primary/20 mb-5" />
+                    <p className="font-heading font-bold text-primary text-2xl leading-snug mb-1">
+                      {founder.name}
+                    </p>
+                    <p className="font-body text-[11px] tracking-[0.18em] uppercase text-neutral/45">
+                      {founder.role}
+                    </p>
                   </div>
                 </div>
-
-              </div>
+              ))}
             </div>
-          </section>
-        ))}
+
+          </div>
+        </section>
 
         {/* ── Closing ───────────────────────────────────────────────── */}
         <section className="bg-cream py-14 md:py-20 border-t border-primary/8">

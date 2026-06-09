@@ -124,7 +124,7 @@ export default function Navbar() {
             <button
               onClick={() => setLogoOpen(true)}
               aria-label="View school crest"
-              className="shrink-0 w-14 h-14 rounded-full overflow-hidden transition-all duration-300 shadow-xl shadow-primary/20 hover:scale-105 hover:shadow-[0_15px_30px_rgba(59,130,246,0.18)]"
+              className="shrink-0 w-12 h-12 rounded-full overflow-hidden transition-all duration-300 shadow-xl shadow-primary/20 hover:scale-105 hover:shadow-[0_15px_30px_rgba(59,130,246,0.18)]"
             >
               <img
                 src="/images/logo/logo.png"
