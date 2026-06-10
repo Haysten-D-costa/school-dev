@@ -6,6 +6,7 @@ import {
   Events,
   AcademicsPreview,
   GalleryStrip,
+  Testimonials,
 } from "@/components/sections";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
         <PrincipalMessage />
         <Events />
         <AcademicsPreview />
+        <Testimonials />
         <GalleryStrip />
       </main>
       <Footer />

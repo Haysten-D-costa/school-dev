@@ -4,3 +4,4 @@ export { default as PrincipalMessage } from "./principal-message";
 export { default as Events } from "./events";
 export { default as AcademicsPreview } from "./academics-preview";
 export { default as GalleryStrip } from "./gallery-strip";
+export { default as Testimonials } from "./testimonials";

@@ -231,7 +231,7 @@ export default function Navbar() {
       >
         <nav className="flex flex-col px-6 py-3" aria-label="Mobile navigation">
           <MobileAccordion label="About Us"    links={ABOUT_LINKS}     onClose={() => setMobileOpen(false)} />
-          <MobileAccordion label="Academics"   links={ACADEMICS_LINKS} onClose={() => setMobileOpen(false)} />
+          {/* <MobileAccordion label="Academics"   links={ACADEMICS_LINKS} onClose={() => setMobileOpen(false)} /> */}
           <MobileAccordion label="School Life" links={LIFE_LINKS}      onClose={() => setMobileOpen(false)} />
           {NAV_LINKS.map((link) => (
             <Link

@@ -191,7 +191,7 @@ export default function HistoryPage() {
         </section>
 
         {/* ── Closing ───────────────────────────────────────────────── */}
-        <section className="bg-cream py-14 md:py-20 border-t border-primary/8">
+        {/* <section className="bg-cream py-14 md:py-20 border-t border-primary/8">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             <div className="max-w-2xl">
               <p className="font-body text-[10px] font-bold tracking-[0.35em] uppercase text-neutral/40 mb-3">
@@ -213,7 +213,7 @@ export default function HistoryPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
       </main>
       <Footer />
