@@ -10,7 +10,7 @@ export default function Events() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
-  const displayed = EVENTS.slice(0, 6);
+  const displayed = EVENTS.slice(0, 3);
 
   return (
     <section ref={ref} className="py-20 md:py-28 bg-cream-dark/50" aria-label="Upcoming events">

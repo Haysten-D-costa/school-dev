@@ -196,25 +196,6 @@ export default function Hero() {
               ))}
             </motion.div>
 
-            {/* ── Slide quote ────────────────────────────────────────── */}
-            <div className="mt-10 pt-8 border-t border-cream/10 min-h-14">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={current}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <p className="font-body italic text-cream/50 text-sm leading-relaxed">
-                    &ldquo;{SLIDES[current].quote}&rdquo;
-                  </p>
-                  <p className="font-body text-[11px] tracking-[0.15em] uppercase text-cream/30 mt-1.5">
-                    — {SLIDES[current].author}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-            </div>
 
           </div>
 
