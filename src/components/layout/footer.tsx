@@ -127,38 +127,38 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Col 2 — Quick Links */}
-            <div className="lg:col-span-1">
-              <ColHeading>Quick Links</ColHeading>
-              <ul className="space-y-2.5">
-                {QUICK_LINKS.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="font-body text-cream/50 text-sm hover:text-cream transition-colors duration-200"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Col 3 — School Life */}
-            <div className="lg:col-span-1">
-              <ColHeading>School Life</ColHeading>
-              <ul className="space-y-2.5">
-                {SCHOOL_LIFE_LINKS.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="font-body text-cream/50 text-sm hover:text-cream transition-colors duration-200"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            {/* Col 2+3 — Quick Links & School Life side by side */}
+            <div className="lg:col-span-2 grid grid-cols-2 gap-6">
+              <div>
+                <ColHeading>Quick Links</ColHeading>
+                <ul className="space-y-2.5">
+                  {QUICK_LINKS.map((link) => (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        className="font-body text-cream/50 text-sm hover:text-cream transition-colors duration-200"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <ColHeading>School Life</ColHeading>
+                <ul className="space-y-2.5">
+                  {SCHOOL_LIFE_LINKS.map((link) => (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        className="font-body text-cream/50 text-sm hover:text-cream transition-colors duration-200"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             {/* Col 4 — Follow Us */}

@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, GraduationCap } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { siteConfig } from "@/config/site";
-import { ABOUT_LINKS, ACADEMICS_LINKS, LIFE_LINKS, NAV_LINKS } from "@/data/navigation";
+import { ABOUT_LINKS, LIFE_LINKS, NAV_LINKS } from "@/data/navigation";
 
 function NavDropdown({
   open,
@@ -83,7 +83,7 @@ function MobileAccordion({
 export default function Navbar() {
   const [scrolled,   setScrolled]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openMenu,   setOpenMenu]   = useState<"about" | "academics" | "life" | null>(null);
+  const [openMenu,   setOpenMenu]   = useState<"about" | "life" | null>(null);
   const [logoOpen,   setLogoOpen]   = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -101,7 +101,7 @@ export default function Navbar() {
     return () => document.removeEventListener("keydown", onKey);
   }, []);
 
-  const open  = (menu: "about" | "academics" | "life") => {
+  const open  = (menu: "about" | "life") => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setOpenMenu(menu);
   };
@@ -157,20 +157,6 @@ export default function Navbar() {
                 <span className="absolute -bottom-0.5 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
               </button>
               <NavDropdown open={openMenu === "about"} links={ABOUT_LINKS} onClose={() => setOpenMenu(null)} />
-            </div>
-
-            {/* Academics */}
-            <div className="relative" onMouseEnter={() => open("academics")} onMouseLeave={close}>
-              <button
-                aria-haspopup="true"
-                aria-expanded={openMenu === "academics"}
-                className="relative flex items-center gap-1 font-body text-[13px] tracking-widest uppercase transition-colors duration-200 group text-neutral/70 hover:text-primary"
-              >
-                Academics
-                <ChevronDown size={13} className={`mt-px transition-transform duration-200 ${openMenu === "academics" ? "rotate-180 text-primary" : ""}`} />
-                <span className="absolute -bottom-0.5 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
-              </button>
-              <NavDropdown open={openMenu === "academics"} links={ACADEMICS_LINKS} onClose={() => setOpenMenu(null)} />
             </div>
 
             {/* School Life */}

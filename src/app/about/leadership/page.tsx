@@ -21,7 +21,7 @@ function LeaderCard({ member, flip }: { member: LeadershipMember; flip: boolean 
     .join("");
 
   const photoCol = (
-    <div className="lg:col-span-4 flex flex-col items-center lg:items-start">
+    <div className={`lg:col-span-4 flex flex-col items-center lg:items-start ${flip ? "lg:order-last" : ""}`}>
       {/* Photo frame */}
       <div className="relative w-64 lg:w-full shrink-0">
         <div className="absolute -top-3 -left-3 w-full h-full border-2 border-primary/20 rounded-sm" />
@@ -65,7 +65,7 @@ function LeaderCard({ member, flip }: { member: LeadershipMember; flip: boolean 
   );
 
   const messageCol = (
-    <div className="lg:col-span-8">
+    <div className={`lg:col-span-8 ${flip ? "lg:order-first" : ""}`}>
       {/* Pull quote */}
       <div className="mb-8">
         <Quote size={28} className="text-primary/20 fill-primary/20 mb-3" />
@@ -88,17 +88,8 @@ function LeaderCard({ member, flip }: { member: LeadershipMember; flip: boolean 
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-      {flip ? (
-        <>
-          {messageCol}
-          {photoCol}
-        </>
-      ) : (
-        <>
-          {photoCol}
-          {messageCol}
-        </>
-      )}
+      {photoCol}
+      {messageCol}
     </div>
   );
 }

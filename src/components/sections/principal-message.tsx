@@ -5,6 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { Quote, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { PRINCIPAL_MESSAGE } from "@/data/principal-message";
+import { LEADERSHIP } from "@/data/leadership";
 
 export default function PrincipalMessage() {
   const ref = useRef<HTMLDivElement>(null);
@@ -45,14 +46,14 @@ export default function PrincipalMessage() {
             <div className="relative w-60 h-72 lg:w-full lg:h-80 shrink-0">
               {/* Red accent frame */}
               <div className="absolute -top-3 -left-3 w-full h-full border-2 border-primary/20 rounded-sm" />
-              {/* Photo placeholder */}
-              <div className="relative w-full h-full bg-cream-dark rounded-sm overflow-hidden flex items-center justify-center">
-                <div className="text-center text-neutral/30">
-                  <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
-                    <span className="font-heading font-black text-3xl text-primary/40">AF</span>
-                  </div>
-                  <p className="font-body text-xs tracking-wide">Principal&apos;s Photo</p>
-                </div>
+              {/* Photo */}
+              <div className="relative w-full h-full bg-cream-dark rounded-sm overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={LEADERSHIP[0].photo}
+                  alt={LEADERSHIP[0].name}
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
               {/* Red corner accent */}
               <div className="absolute bottom-0 right-0 w-10 h-10 bg-primary" />
@@ -63,7 +64,7 @@ export default function PrincipalMessage() {
               <p className="font-heading font-bold text-primary text-lg">
                 {PRINCIPAL_MESSAGE.name}
               </p>
-              <p className="font-body text-[12px] tracking-[0.1em] text-neutral/55 mt-1">
+              <p className="font-body text-[12px] tracking-widest text-neutral/55 mt-1">
                 {PRINCIPAL_MESSAGE.designation}
               </p>
             </div>
